@@ -1,9 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BONSAI PROJECT — 盆栽企画 Official Portal</title>
+
+  <!-- 1. 基本SEO・クローラー制御 -->
+  <meta name="description" content="BONSAI PROJECT（盆栽企画）公式ポータルサイト。「日本より AI をこめて」をテーマに、ゴーストサーチカメラ（Ghost Search Camera）やハロウィンくじ（Halloween lucky draw）などの独創的なエンターテインメント・ジョークアプリを開発・発信するクリエイティブスタジオ。">
+  <meta name="keywords" content="盆栽企画,BONSAI PROJECT,Ghost Search Camera,ゴーストサーチカメラ,Halloween lucky draw,ハロウィンくじ,アプリ開発,個人開発,Androidアプリ">
+  <meta name="author" content="BONSAI PROJECT (盆栽企画)">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#000000">
+
+  <!-- 2. 正規URL・多言語アノテーション -->
+  <link rel="canonical" href="https://mizotan.github.io/bonsaiproject/">
+  <link rel="alternate" hreflang="ja" href="https://mizotan.github.io/bonsaiproject/">
+  <link rel="alternate" hreflang="en" href="https://mizotan.github.io/bonsaiproject/">
+  <link rel="alternate" hreflang="x-default" href="https://mizotan.github.io/bonsaiproject/">
+
+  <!-- 3. ファビコン（Google検索結果一覧のアイコン表示用） -->
+  <link rel="icon" type="image/png" href="rogo.png">
+  <link rel="apple-touch-icon" href="rogo.png">
+
+  <!-- 4. OGP (Open Graph Protocol) / Twitter Card -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BONSAI PROJECT — 盆栽企画">
+  <meta property="og:title" content="BONSAI PROJECT — 盆栽企画 Official Portal">
+  <meta property="og:description" content="Experimental App Development &amp; Creative Studio — 日本より AI をこめて。盆栽企画の公式ポータルサイト。">
+  <meta property="og:url" content="https://mizotan.github.io/bonsaiproject/">
+  <meta property="og:image" content="https://mizotan.github.io/bonsaiproject/rogo.png">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="BONSAI PROJECT — 盆栽企画 Official Portal">
+  <meta name="twitter:description" content="Experimental App Development &amp; Creative Studio — 日本より AI をこめて。">
+  <meta name="twitter:image" content="https://mizotan.github.io/bonsaiproject/rogo.png">
+
+  <!-- 5. 構造化データ (JSON-LD / Schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://mizotan.github.io/bonsaiproject/#organization",
+        "name": "BONSAI PROJECT",
+        "alternateName": "盆栽企画",
+        "url": "https://mizotan.github.io/bonsaiproject/",
+        "logo": "https://mizotan.github.io/bonsaiproject/rogo.png",
+        "email": "bonsai.project.2026@gmail.com",
+        "description": "Experimental App Development & Creative Studio — 日本より AI をこめて"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://mizotan.github.io/bonsaiproject/#website",
+        "url": "https://mizotan.github.io/bonsaiproject/",
+        "name": "BONSAI PROJECT — 盆栽企画 Official Portal",
+        "publisher": {
+          "@id": "https://mizotan.github.io/bonsaiproject/#organization"
+        },
+        "inLanguage": ["ja", "en"]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Ghost Search Camera",
+        "alternateName": "ゴーストサーチカメラ",
+        "url": "https://mizotan.github.io/ghostsearchcamera/",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "Android",
+        "author": {
+          "@id": "https://mizotan.github.io/bonsaiproject/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "JPY"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Halloween lucky draw",
+        "alternateName": "ハロウィンくじ",
+        "url": "https://mizotan.github.io/halloweenluckydraw/",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "Android",
+        "author": {
+          "@id": "https://mizotan.github.io/bonsaiproject/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "JPY"
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     * {
       box-sizing: border-box;
@@ -95,7 +188,7 @@
       padding: 20px;
       background: rgba(0, 25, 0, 0.3);
       box-shadow: 0 0 8px rgba(0, 255, 0, 0.1);
-      margin-bottom: 20px; /* ★複数アプリを並べるための余白追加 */
+      margin-bottom: 20px;
     }
     .app-card h3 {
       font-size: 1.1rem;
@@ -108,16 +201,46 @@
       color: #00cc33;
       margin-bottom: 14px;
     }
+    .app-card p.en-sub {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #00aa22;
+      line-height: 1.5;
+    }
+
+    /* カード内アクション・ステータス行 */
+    .card-actions {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
     .badge-status {
       display: inline-block;
       font-size: 11px;
       letter-spacing: 0.05em;
-      border: 1px solid #00FF00;
-      padding: 3px 10px;
+      border: 1px dashed rgba(0, 255, 0, 0.6);
+      padding: 5px 10px;
       border-radius: 4px;
+      color: #00cc33;
+      background: #000000;
+    }
+    .card-link-btn {
       color: #00FF00;
+      text-decoration: none;
+      border: 1px solid #00FF00;
+      padding: 5px 12px;
+      display: inline-block;
+      border-radius: 4px;
+      font-size: 12px;
       background: #000000;
       box-shadow: 0 0 6px rgba(0, 255, 0, 0.3);
+      transition: background 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card-link-btn:hover, .card-link-btn:active {
+      background: #002b00;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
     }
 
     /* リーガル・外部リンク */
@@ -167,51 +290,69 @@
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <main class="wrap">
 
     <!-- ブランドヘッダー＆ロゴ -->
     <header class="brand-header">
-      <img src="rogo.png" alt="盆栽企画 presents" class="brand-logo">
+      <img src="rogo.png" alt="盆栽企画 presents (BONSAI PROJECT)" width="140" height="140" class="brand-logo">
       <h1 class="brand-title">BONSAI PROJECT</h1>
-      <p class="brand-desc">Experimental App Development & Creative Studio</p>
+      <p class="brand-desc" lang="en">Experimental App Development &amp; Creative Studio</p>
       <p class="brand-desc">日本より AI をこめて</p>
     </header>
 
     <!-- プロダクト・アプリ一覧 -->
-    <section>
-      <h2>Made in Japan APPLICATIONS </h2>
-      
-      <div class="app-card">
+    <section id="applications" aria-labelledby="heading-apps">
+      <h2 id="heading-apps">Made in Japan APPLICATIONS</h2>
+
+      <article class="app-card">
         <h3>Ghost Search Camera（ゴーストサーチカメラ）</h3>
         <p>
-          スマートフォン越しに日常のノイズから異界の兆候を可視化する、オカルト・エンターテインメントカメラアプリケーション。ジャパニーズ トラディショナル 九字切り護符機能搭載。
+          スマートフォン越しに日常の空間ノイズや微細な輝度変化を独自アルゴリズムでリアルタイム解析し、異界の兆候（異常値）を可視化するオカルト・ジョークカメラアプリケーション。九字切りオーバーレイ演出搭載。
         </p>
-        <p style="margin-top: 10px; font-size: 12px; color: #00aa22; line-height: 1.5;">
-          An experimental occult camera app visualizing unseen anomalies. Featuring Kuji-Kiri talisman protection.
+        <p class="en-sub" lang="en">
+          An experimental occult joke camera app visualizing unseen sensor anomalies in real time. Featuring a cyber Kuji-Kiri grid overlay.
         </p>
-        <div style="margin-top: 14px;">
+        <div class="card-actions">
+          <a class="card-link-btn" href="https://mizotan.github.io/ghostsearchcamera/">
+            Official Page (公式HP) →
+          </a>
           <span class="badge-status">Google Play Release: Coming Soon</span>
+          <!-- ★Google Play公開時は下のコメントを解除してリンクを有効化できます -->
+          <!--
+          <a class="card-link-btn" href="https://play.google.com/store/apps/details?id=パッケージ名">
+            Google Play →
+          </a>
+          -->
         </div>
-      </div>
-      
-      <div class="app-card">
+      </article>
+
+      <article class="app-card">
         <h3>Halloween lucky draw（ハロウィン ラッキー ドロー）</h3>
         <p>
-          トリック・オア・トリート！タップひとつで「お菓子(あたり？)」&「いたずら(チャレンジ!?)」。遊び心を忘れない出来る人へのハロウィンおみくじアプリ。内容カスタマイズ機能搭載。
+          トリック・オア・トリート！タップひとつで「お菓子(あたり？)」&amp;「いたずら(チャレンジ!?)」。遊び心を忘れない出来る人へのハロウィンおみくじアプリ。内容カスタマイズ・ON/OFF調整機能搭載。
         </p>
-        <p style="margin-top: 10px; font-size: 12px; color: #00aa22; line-height: 1.5;">
-          A customizable trick-or-treat interactive lucky draw application for Halloween events.
+        <p class="en-sub" lang="en">
+          A customizable trick-or-treat interactive lucky draw application for family parties and Halloween events.
         </p>
-        <div style="margin-top: 14px;">
+        <div class="card-actions">
+          <a class="card-link-btn" href="https://mizotan.github.io/halloweenluckydraw/">
+            Official Page (公式HP) →
+          </a>
           <span class="badge-status">Google Play Release: Coming Soon</span>
+          <!-- ★Google Play公開時は下のコメントを解除してリンクを有効化できます -->
+          <!--
+          <a class="card-link-btn" href="https://play.google.com/store/apps/details?id=パッケージ名">
+            Google Play →
+          </a>
+          -->
         </div>
-      </div>
-      
+      </article>
+
     </section>
 
     <!-- リーガル・ドキュメント -->
-    <section>
-      <h2>LEGAL DOCUMENTS</h2>
+    <section id="legal" aria-labelledby="heading-legal">
+      <h2 id="heading-legal">LEGAL DOCUMENTS</h2>
       <ul class="links-list">
         <li>
           <a class="link-btn" href="https://mizotan.github.io/privacypolicy/">
@@ -222,8 +363,8 @@
     </section>
 
     <!-- 連絡先 -->
-    <section>
-      <h2>CONTACT</h2>
+    <section id="contact" aria-labelledby="heading-contact">
+      <h2 id="heading-contact">CONTACT</h2>
       <div class="contact-info">
         Inquiries / Contact: bonsai.project.2026@gmail.com
       </div>
@@ -234,6 +375,6 @@
       &copy; 2026 BONSAI PROJECT All Rights Reserved.
     </footer>
 
-  </div>
+  </main>
 </body>
 </html>
