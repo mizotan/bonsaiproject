@@ -104,14 +104,21 @@
       padding: 0;
     }
     html, body {
+      min-height: 100vh;
       background-color: #000000;
+      /* 01.pngを背景に固定配置 */
+      background-image: url("01.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-attachment: fixed;
       color: #00FF00;
       font-family: "Courier New", Courier, "Segoe UI", "Hiragino Sans", "Noto Sans JP", monospace, sans-serif;
       line-height: 1.75;
       font-size: 14px;
     }
 
-    /* ベクタースキャン風スクロールバー */
+    /* ベクタースキャン風スクロールバー（ページ全体＆共通） */
     ::-webkit-scrollbar {
       width: 8px;
       background: #000000;
@@ -131,6 +138,7 @@
       box-shadow: 0 0 10px rgba(0, 255, 0, 0.9);
     }
 
+    /* 中央配置ラップ */
     .wrap {
       max-width: 680px;
       margin: 0 auto;
@@ -267,6 +275,59 @@
       box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
     }
 
+    /* LATEST UPDATES（10行表示・緑スクロールバー付きボックス） */
+    .updates-box {
+      border: 1px solid rgba(0, 255, 0, 0.35);
+      border-radius: 8px;
+      padding: 14px 18px;
+      background: rgba(0, 25, 0, 0.3);
+      box-shadow: 0 0 8px rgba(0, 255, 0, 0.1);
+      font-size: 13px;
+      line-height: 1.75;
+      /* 13px * 1.75 (=22.75px) * 10行 = 227.5px + 上下padding 28px = 255.5px */
+      height: 256px;
+      overflow-y: scroll;
+      /* Firefox向けスクロールバー色指定 */
+      scrollbar-width: thin;
+      scrollbar-color: #00cc00 #001100;
+    }
+    /* Chrome / Edge / Safari 向け専用スクロールバー装飾 */
+    .updates-box::-webkit-scrollbar {
+      width: 10px;
+    }
+    .updates-box::-webkit-scrollbar-track {
+      background: rgba(0, 20, 0, 0.8);
+      border-left: 1px solid rgba(0, 255, 0, 0.25);
+      border-radius: 0 8px 8px 0;
+    }
+    .updates-box::-webkit-scrollbar-thumb {
+      background: #00aa00;
+      border: 1px solid #00FF00;
+      border-radius: 4px;
+      box-shadow: 0 0 6px rgba(0, 255, 0, 0.7);
+    }
+    .updates-box::-webkit-scrollbar-thumb:hover {
+      background: #00FF00;
+      box-shadow: 0 0 12px rgba(0, 255, 0, 1);
+    }
+
+    .updates-list {
+      list-style: none;
+    }
+    .updates-list li {
+      color: #00cc33;
+      border-bottom: 1px dashed rgba(0, 255, 0, 0.15);
+    }
+    .updates-list li:last-child {
+      border-bottom: none;
+    }
+    .update-date {
+      color: #00FF00;
+      font-weight: bold;
+      margin-right: 10px;
+      text-shadow: 0 0 4px rgba(0, 255, 0, 0.5);
+    }
+
     /* 連絡先 */
     .contact-info {
       font-size: 13px;
@@ -317,12 +378,6 @@
             Official Page (公式HP) →
           </a>
           <span class="badge-status">Google Play Release: Coming Soon</span>
-          <!-- ★Google Play公開時は下のコメントを解除してリンクを有効化できます -->
-          <!--
-          <a class="card-link-btn" href="https://play.google.com/store/apps/details?id=パッケージ名">
-            Google Play →
-          </a>
-          -->
         </div>
       </article>
 
@@ -339,12 +394,6 @@
             Official Page (公式HP) →
           </a>
           <span class="badge-status">Google Play Release: Coming Soon</span>
-          <!-- ★Google Play公開時は下のコメントを解除してリンクを有効化できます -->
-          <!--
-          <a class="card-link-btn" href="https://play.google.com/store/apps/details?id=パッケージ名">
-            Google Play →
-          </a>
-          -->
         </div>
       </article>
 
@@ -360,6 +409,27 @@
           </a>
         </li>
       </ul>
+    </section>
+
+    <!-- 最新情報（10行表示・スクロールボックス） -->
+    <section id="updates" aria-labelledby="heading-updates">
+      <h2 id="heading-updates">LATEST UPDATES</h2>
+      <div class="updates-box" tabindex="0" aria-label="更新履歴">
+        <ul class="updates-list">
+          <li><span class="update-date">[2026.10.15]</span>公式ポータルサイトの背景ビジュアル＆UIをアップデートしました。</li>
+          <li><span class="update-date">[2026.10.12]</span>「Halloween lucky draw」Google Play ストア公開準備を完了しました。</li>
+          <li><span class="update-date">[2026.10.08]</span>「Halloween lucky draw」公式紹介ページを公開しました。</li>
+          <li><span class="update-date">[2026.10.05]</span>「Ghost Search Camera」Google Play ストア審査手続きを開始しました。</li>
+          <li><span class="update-date">[2026.10.01]</span>「Ghost Search Camera」九字切りオーバーレイ演出および多言語対応を強化しました。</li>
+          <li><span class="update-date">[2026.09.28]</span>「Ghost Search Camera」公式紹介ページを公開しました。</li>
+          <li><span class="update-date">[2026.09.25]</span>多言語対応プライバシーポリシーポータル（Privacy Policy）を開設しました。</li>
+          <li><span class="update-date">[2026.09.20]</span>「Halloween lucky draw」カスタムくじ編集機能のベータテストを実施しました。</li>
+          <li><span class="update-date">[2026.09.15]</span>「Ghost Search Camera」リアルタイム輝度解析アルゴリズムの最適化を完了しました。</li>
+          <li><span class="update-date">[2026.09.10]</span>BONSAI PROJECT（盆栽企画）公式ポータルサイトをオープンしました。</li>
+          <li><span class="update-date">[2026.09.05]</span>公式ブランドロゴおよびサイバーグリーン・デザインシステムを策定しました。</li>
+          <li><span class="update-date">[2026.09.01]</span>BONSAI PROJECT（盆栽企画）としてのアプリ開発プロジェクトを始動しました。</li>
+        </ul>
+      </div>
     </section>
 
     <!-- 連絡先 -->
